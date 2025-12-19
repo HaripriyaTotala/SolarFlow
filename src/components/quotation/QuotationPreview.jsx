@@ -35,7 +35,6 @@ export default function QuotationPreview({ data, onBack }) {
     const margin = 20
 
     // Convert images to base64
-    const logoBase64 = await getBase64(logo)
     const solarimgBase64 = await getBase64(solarimg)
 
     // --- PAGE 1: COVER WITH BACKGROUND ---
@@ -44,8 +43,6 @@ export default function QuotationPreview({ data, onBack }) {
     doc.addImage(solarimgBase64, 'JPEG', 0, 0, pageWidth, pageHeight)
     doc.setGState(new doc.GState({ opacity: 1 }))
     
-    // Add logo
-    doc.addImage(logoBase64, 'JPEG', margin, 10, 40, 25)
     
     // Add footer bar
     doc.setFillColor(255, 204, 102)
@@ -78,8 +75,6 @@ export default function QuotationPreview({ data, onBack }) {
     doc.rect(0, 0, pageWidth, pageHeight, 'F')
     doc.setGState(new doc.GState({ opacity: 1 }))
 
-    // Logo top left
-    doc.addImage(logoBase64, 'JPEG', margin, 10, 30, 18)
     
     // Contact info top right
     doc.setFontSize(9)
@@ -188,8 +183,6 @@ export default function QuotationPreview({ data, onBack }) {
     doc.rect(0, 0, pageWidth, pageHeight, 'F')
     doc.setGState(new doc.GState({ opacity: 1 }))
 
-    // Logo top left
-    doc.addImage(logoBase64, 'JPEG', margin, 10, 30, 18)
     
     // Pricing Table
     let y2 = 40
@@ -282,8 +275,6 @@ export default function QuotationPreview({ data, onBack }) {
     doc.rect(0, 0, pageWidth, pageHeight, 'F')
     doc.setGState(new doc.GState({ opacity: 1 }))
 
-    // Logo top left
-    doc.addImage(logoBase64, 'JPEG', margin, 10, 30, 18)
     // Why Go Solar section
     doc.setFontSize(16)
     doc.setTextColor(41, 128, 185)
@@ -316,7 +307,6 @@ export default function QuotationPreview({ data, onBack }) {
     doc.text('Contact Us: 91+ 9481721501, 9449934105', margin, contactY + 16)
     doc.text('Mail: omsolartdr@gmail.com', margin, contactY + 24)
     doc.text('Website: www.omsolartdr.com', margin, contactY + 32)
-    doc.addImage(logoBase64, 'JPEG', pageWidth - 50, contactY, 40, 27)
 
     pdfRef.current = doc
     const customerName = data.fullName ? data.fullName.replace(/[^a-zA-Z0-9\s]/g, '').replace(/\s+/g, '_') : 'customer'
